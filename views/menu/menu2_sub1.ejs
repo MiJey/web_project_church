@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="description" content="The Overflowing church website's main page" />
+  <meta name="author" content="unikys@gmail.com" />
+  <link rel="stylesheet" type="text/css" href="/css/main.css" title="style" />
+  <link rel="stylesheet" type="text/css" href="/css/menu1_sub.css" title="style" />
+  <link rel="stylesheet" type="text/css" href="/css/menu2_sub.css" title="style" />
+  <title>전주신상교회</title>
+</head>
+
+<body class="fullpage">
+  <div class="wrap">
+    <% include ../header.ejs %>
+
+      <div class="sub-wrap">
+        <% include ./menu2_index.ejs %>
+
+          <div class="sub-content">
+            <table class="content-table">
+              <tbody>
+                <tr>
+                  <td height="90" valign="top">
+                    <div class="table-title">신상TV</div>
+                  </td>
+                </tr>
+                <tr>
+                  <div class="mdDefault_W100_Div">
+                    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="mdBoardTable">
+                      <tr class="md_PCverList">
+                        <th scope="col" style="width: 50px;">번호</th>
+                        <th scope="col">제목</th>
+                        <th scope="col" style="width: 120px;">본문</th>
+                        <th scope="col" style="width: 100px;">설교자</th>
+                        <th scope="col" style="width: 100px;">날짜</th>
+                        <th scope="col" class="BoardLastTh" style="width: 130px;">보기</th>
+                      </tr>
+                      <tr>
+                      </tr>
+                    </table>
+                  </div>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+      </div>
+  </div>
+</body>
+
+</html>

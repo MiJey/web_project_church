@@ -1,56 +1,19 @@
 <!DOCTYPE html>
 <html lang="ko-KR">
+
 <head>
-  <meta charset="utf-8"/>
+  <meta charset="utf-8" />
   <meta name="description" content="The Overflowing church website's main page" />
   <meta name="author" content="unikys@gmail.com" />
-  <link rel="stylesheet" type="text/css" href="/stylesheets/main.css" title="style" />
-  <title>신상 교회</title>
+  <link rel="stylesheet" type="text/css" href="/css/main.css" title="style" />
+  <title>전주신상교회</title>
 </head>
-<body>
-  <nav id="topMenu" >
-    <ul>
-      <li class="topMenuLi"> <a class="menuLink">교회소개</a>
-        <ul class="submenu">
-          <li><a class="submenuLink longLink">인사말</a></li>
-          <li><a class="submenuLink longLink">연혁</a></li>
-          <li><a class="submenuLink longLink">섬기는사람들</a></li>
-          <li><a class="submenuLink longLink">예배안내</a></li>
-          <li><a class="submenuLink longLink">오시는길</a></li>
-        </ul>
-      </li>
-      <li>|</li>
-      <li class="topMenuLi"> <a class="menuLink">예배</a>
-        <ul class="submenu">
-          <li><a class="submenuLink longLink">신상TV</a></li>
-          <li><a class="submenuLink longLink">찬양대</a></li>
-        </ul>
-      </li>
-      <li>|</li>
-      <li class="topMenuLi"> <a class="menuLink">선교</a>
-        <ul class="submenu">
-          <li><a class="submenuLink longLink">해외선교</a></li>
-          <li><a class="submenuLink longLink">국내선교</a></li>
-        </ul>
-      </li>
-      <li>|</li>
-      <li class="topMenuLi"> <a class="menuLink">다음세대</a>
-        <ul class="submenu">
-          <li><a class="submenuLink longLink">유치부</a></li>
-          <li><a class="submenuLink longLink">어린이부</a></li>
-          <li><a class="submenuLink longLink">중고등부</a></li>
-          <li><a class="submenuLink longLink">아름회</a></li>
-        </ul>
-      </li>
-      <li>|</li>
-      <li class="topMenuLi"> <a class="menuLink">커뮤니티</a>
-        <ul class="submenu">
-          <li><a class="submenuLink longLink">공지사항</a></li>
-          <li><a class="submenuLink longLink">자유게시판</a></li>
-        </ul>
-      </li>
-    </ul>
-  </nav>
 
+<body class="fullpage">
+  <div class="wrap">
+    <% include ./header.ejs %>
+    <% include ./main_banner.ejs %>
+  </div>
 </body>
+
 </html>

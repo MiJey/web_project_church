@@ -1,0 +1,45 @@
+<div id="img_list" style="width:100%; height:300px; overflow:hidden;">
+  <img class="max-small" src="/img/mainimg1.jpg" />
+  <img class="max-small" src="/img/mainimg2.png" />
+  <img class="max-small" src="/img/mainimg3.jpg" />
+</div>
+
+<input id="slide_btn" type="button" name="" value="<" onclick="scroll_left()">
+<input type="button" name="" value=">" onclick="scroll_right()"> 눌러 보세요 *^^*
+
+<script type="text/javascript">
+  var amt = 60; // 움직임 값 (클수록 빠름)
+  var gap = 300; // 이미지와 사이 공간의 합
+
+  var cnt = 0;
+  var init_amt = amt;
+
+  function scroll_right() {
+    document.getElementById('img_list').scrollLeft += amt;
+    if (cnt >= gap) {
+      cnt = 0;
+      var adj = document.getElementById('img_list').scrollLeft % gap;
+      document.getElementById('img_list').scrollLeft -= adj;
+      amt = init_amt;
+    } else {
+      amt = Math.ceil(amt / 1.2);
+      setTimeout(scroll_right, 10);
+    }
+    cnt = cnt + amt;
+  }
+
+  function scroll_left() {
+    document.getElementById('img_list').scrollLeft -= amt;
+    if (cnt >= gap) {
+      cnt = 0;
+      var adj = document.getElementById('img_list').scrollLeft % gap;
+      if (adj > 0) adj = gap - adj
+      document.getElementById('img_list').scrollLeft += adj;
+      amt = init_amt;
+    } else {
+      amt = Math.ceil(amt / 1.2);
+      setTimeout(scroll_left, 10);
+    }
+    cnt = cnt + amt;
+  }
+</script>

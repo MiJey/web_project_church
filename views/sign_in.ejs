@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="description" content="The Overflowing church website's main page" />
+  <meta name="author" content="unikys@gmail.com" />
+  <link rel="stylesheet" type="text/css" href="/css/main.css" title="style" />
+  <link rel="stylesheet" type="text/css" href="/css/sign.css" title="style" />
+  <title>전주신상교회</title>
+</head>
+
+<body class="fullpage">
+  <div class="wrap">
+    <% include ./header.ejs %>
+  </div>
+
+  <div align="center">
+    <h1>로그인</h1>
+    <h2>사랑과 행복이 넘치는 전주신상교회입니다</h2>
+
+    <hr class="line"></hr>
+
+    <% if(code == 401){ %>
+      <p class="alert">아이디와 비밀번호를 다시 한 번 확인해주세요.</p>
+    <% } %>
+
+    <form name="sign_in_form" method="post" action="/sign_in/login">
+      <table align="center" style="padding:5px 0 5px 0; ">
+        <tr>
+          <th>ID</th>
+          <td><input type="text" name="username"></td>
+        </tr>
+        <tr>
+          <th>비밀번호</th>
+          <td><input type="password" name="password"></td>
+        </tr>
+      </table>
+      <input type="submit" onclick="button_event();" value="로그인">
+      <script type="text/javascript">
+        function button_event() {
+          if (sign_in_form.username.value == "") {
+            alert("아이디를 입력하지 않았습니다.")
+            sign_in_form.username.focus()
+          } else if (sign_in_form.password.value == "") {
+            alert("비밀번호를 입력하지 않았습니다.")
+            sign_in_form.password.focus();
+          }
+        }
+      </script>
+    </form>
+
+    <input type="button" onclick="location.href = 'find_id.html'" value="아이디 찾기">
+    <input type="button" onclick="location.href = 'find_pw.html'" value="비밀번호 찾기">
+
+    <hr class="line"></hr>
+  </div>
+</body>
+
+</html>
