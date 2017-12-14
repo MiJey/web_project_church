@@ -67,11 +67,7 @@ passport.use(new LocalStrategy(
 ));
 
 router.get('/', function(req, res, next) {
-  res.render('sign_in', { messages: req.flash('info') });
-});
-
-router.get('/login', function(req, res){
-
+  res.render('sign_in', { code: 200 });
 });
 
 router.post('/login',
@@ -81,6 +77,7 @@ router.post('/login',
     failureFlash: false
   }),
   function(err, req, res, next){
+    console.log("포포포슽스");
     res.render('sign_in', { code: 401 });
   }
 );
