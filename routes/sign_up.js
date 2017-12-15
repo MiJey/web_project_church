@@ -25,7 +25,7 @@ router.post('/register', function(req, res){
   var userid = req.body.userid;
   var password = req.body.password;
   var name = req.body.name;
-  var birth = req.body.year + req.body.month + req.body.date;
+  var birth = req.body.year + '-' + req.body.month + '-' + req.body.date;
   var phone = req.body.fst_ph + req.body.mid_ph + req.body.last_ph;
   var email = req.body.email;
 
@@ -54,8 +54,6 @@ router.post('/register', function(req, res){
       });
     }
   });
-
-
 });
 
 router.get('/welcome', function(req, res){

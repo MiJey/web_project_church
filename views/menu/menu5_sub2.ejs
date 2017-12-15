@@ -15,7 +15,7 @@
     <% include ../header.ejs %>
 
     <div class="sub-wrap">
-      <% include ./menu3_index.ejs %>
+      <% include ./menu5_index.ejs %>
 
       <div class="sub-content">
         <table class="content-table">
@@ -27,6 +27,39 @@
             </tr>
           </tbody>
         </table>
+
+        <p>
+          <table>
+            <tr>
+              <th>번호</th>
+              <th>제목</th>
+              <th>글쓴이</th>
+              <th>날짜</th>
+              <th>조회</th>
+            </tr>
+        <% if(posts){
+          for(var i = 0; i < posts.length; i++){
+            var post = posts[i]; %>
+            <tr>
+              <td><%= post.id %></td>
+              <td><a href="/menu/5/2/<%= post.id %>"><%= post.title %></a></td>
+              <td><%= post.userid %></td>
+              <td><%= post.written %></td>
+              <td><%= post.views %></td>
+            </tr>
+        <% }
+        } else { %>
+            <tr>
+              <td colspan='5'>작성된 글이 없습니다.</td>
+            </tr>
+        <% } %>
+          </table>
+        </p>
+
+        <p>
+          <a href='javascript: location.href = location.href + "/post"'>글쓰기</a>
+        </p>
+
       </div>
     </div>
   </div>
