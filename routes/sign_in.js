@@ -6,7 +6,6 @@ var mysql = require('mysql');
 var session = require('express-session');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
-var flash = require('connect-flash');
 
 var router = express.Router();
 var app = express();
@@ -27,15 +26,16 @@ app.use(session({
   resave: false,
   saveUninitialized: true
 }));
-app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());  //session 밑에 있어야 함
 
 passport.serializeUser(function(user, done){
+  console.log('serializeUser: ' + user);
   return done(null, user.userid);
 });
 
 passport.deserializeUser(function(id, done){
+  console.log('deserializeUser: ' + id);
   var sql = 'SELECT * FROM users WHERE userid=?';
   conn.query(sql, id, function(err, rows){
     var user = rows[0];
@@ -80,7 +80,9 @@ router.post('/login',
 
 router.get('/logout', function(req, res){
   req.logout();
-  res.redirect('/');
+  req.session.save(function(){
+    res.redirect('/');
+  });
 });
 
 module.exports = router;
