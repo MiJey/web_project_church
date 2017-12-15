@@ -29,22 +29,24 @@
       <table align="center" style="padding:5px 0 5px 0; ">
         <tr>
           <th>ID</th>
-          <td><input type="text" name="username"></td>
+          <td><input type="text" name="userid" autofocus></td>
         </tr>
         <tr>
           <th>비밀번호</th>
           <td><input type="password" name="password"></td>
         </tr>
       </table>
-      <input type="submit" onclick="button_event();" value="로그인">
+      <input type="submit" onclick="if(button_event() == false) return false;" value="로그인">
       <script type="text/javascript">
         function button_event() {
-          if (sign_in_form.username.value == "") {
-            alert("아이디를 입력하지 않았습니다.")
-            sign_in_form.username.focus()
+          if (sign_in_form.userid.value == "") {
+            alert("아이디를 입력하지 않았습니다.");
+            sign_in_form.username.focus();
+            return false;
           } else if (sign_in_form.password.value == "") {
-            alert("비밀번호를 입력하지 않았습니다.")
+            alert("비밀번호를 입력하지 않았습니다.");
             sign_in_form.password.focus();
+            return false;
           }
         }
       </script>

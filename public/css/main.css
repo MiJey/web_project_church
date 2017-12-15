@@ -11,6 +11,7 @@ ul,li {list-style:none;}
 .content {position:relative;width:1200px;height:100%;margin:0 auto;}
 
 /* header */
+.header p { color: white; } /* welcome text */
 .header .logo {display:inline-block;position:absolute;left:5px;top:7px;z-index:0;width:320px;height:72px;}
 .header .top {position:relative;width:100%;height:30px;background:gray;}
 .header .top .util_menu {}

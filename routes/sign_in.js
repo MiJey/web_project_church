@@ -32,33 +32,30 @@ app.use(passport.initialize());
 app.use(passport.session());  //session 밑에 있어야 함
 
 passport.serializeUser(function(user, done){
-  console.log('serializeUser: ' + user);
   return done(null, user.userid);
 });
 
 passport.deserializeUser(function(id, done){
-  console.log('deserializeUser: ' + id);
   var sql = 'SELECT * FROM users WHERE userid=?';
   conn.query(sql, id, function(err, rows){
-    return done(err, rows[0]);
+    var user = rows[0];
+    return done(err, user);
   });
 });
 
 passport.use(new LocalStrategy(
   {
-    usernameField : 'username',
+    usernameField : 'userid',
     passwordField : 'password',
-     passReqToCallback : true
+    passReqToCallback : true
   }, function(req, username, password, done){
-    console.log('hello: ' + username + ", " + password);
     var sql = 'SELECT * FROM users WHERE userid=?';
     conn.query(sql, username, function(err, rows){
       var user = rows[0];
       if(err){
         return done(err);
       }
-      if(!user || user.password != password){
-        console.log('아이디 비번 틀림~~');
+      if(!user || user.password != password){ //아이디 비번 틀림
         return done(null, false);
       }
       return done(null, user);
@@ -67,7 +64,7 @@ passport.use(new LocalStrategy(
 ));
 
 router.get('/', function(req, res, next) {
-  res.render('sign_in', { code: 200 });
+  res.render('sign_in', { req: req, code: 200 });
 });
 
 router.post('/login',
@@ -77,9 +74,13 @@ router.post('/login',
     failureFlash: false
   }),
   function(err, req, res, next){
-    console.log("포포포슽스");
-    res.render('sign_in', { code: 401 });
+    res.render('sign_in', { req: req, code: 401 });
   }
 );
+
+router.get('/logout', function(req, res){
+  req.logout();
+  res.redirect('/');
+});
 
 module.exports = router;
