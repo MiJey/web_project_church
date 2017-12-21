@@ -19,7 +19,7 @@ app.use(bodyParser.urlencoded({
   extended: false
 }));
 
-//opt는 글보기, 글쓰기, 글수정 등 해당 게시판의 옵션메뉴
+//글보기
 router.get('/:menu/:sub/:opt', function(req, res) {
   var menu = req.params.menu;
   var sub = req.params.sub;
@@ -46,6 +46,7 @@ router.get('/:menu/:sub/:opt', function(req, res) {
   }
 });
 
+//글쓰기
 router.post('/:menu/:sub/:opt', function(req, res) {
   var menu = req.params.menu;
   var sub = req.params.sub;
@@ -72,26 +73,28 @@ router.post('/:menu/:sub/:opt', function(req, res) {
   }
 });
 
+//메뉴
 router.get('/:menu/:sub', function(req, res) {
   var menuURL = 'menu/menu' + req.params.menu + '_sub' + req.params.sub;
+  console.log(menuURL);
   var posts = null;
   var table = null;
 
   if (req.params.menu == 5 && req.params.sub == 2)
     table = 'freeboard'; //자유게시판
 
-  if (table != null) {
+  if (table != null) {  //게시판 등 DB접속이 필요한 경우
     sql = 'SELECT * FROM ??';
     conn.query(sql, table, function(err, rows) {
       if (err) {
         console.log('err: ' + err);
       } else {
         posts = rows;
-        res.render(menuURL, { req: req, posts: posts });
+        res.render('template', { req: req, content: menuURL, posts: posts });
       }
     });
   } else {
-    res.render(menuURL, { req: req, posts: posts });
+    res.render('template', { req: req, content: menuURL, posts: posts });
   }
 });
 

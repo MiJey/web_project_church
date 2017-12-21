@@ -1,37 +1,108 @@
-<!DOCTYPE html>
-<html lang="ko-KR">
-
-<head>
-  <meta charset="utf-8" />
-  <meta name="description" content="The Overflowing church website's main page" />
-  <meta name="author" content="unikys@gmail.com" />
-  <link rel="stylesheet" type="text/css" href="/css/main.css" title="style" />
-  <link rel="stylesheet" type="text/css" href="/css/menu1_sub.css" title="style" />
-  <title>전주신상교회</title>
-</head>
-
-<body class="fullpage">
-  <div class="wrap">
-    <% include ../header.ejs %>
-
-      <div class="sub-wrap">
-        <% include ./menu1_index.ejs %>
-
-          <div class="sub-content">
-            <table class="content-table">
-              <tbody>
-                <tr>
-                  <td height="90" valign="top">
-                    <div class="table-title">예배안내</div>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-      </div>
-      <!--sub-wrap end-->
+<div class="wrapper row2">
+  <div id="breadcrumb" class="hoc clear">
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/menu/1/1">교회소개</a></li>
+      <li><a href="/menu/1/4">예배안내</a></li>
+    </ul>
   </div>
-  <!--wrap end-->
-</body>
-
-</html>
+</div>
+<div class="wrapper row3">
+  <main class="hoc container clear">
+    <div class="sidebar one_quarter first">
+      <h2>교회소개</h2>
+      <nav class="sdb_holder">
+        <ul>
+          <li><a href="/menu/1/1">인사말</a></li>
+          <li><a href="/menu/1/2">연혁</a></li>
+          <li><a href="/menu/1/3">섬기는분들</a></li>
+          <li><a href="/menu/1/4">예배안내</a></li>
+          <li><a href="/menu/1/5">오시는길</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="content three_quarter">
+      <div class="fl_left titlebox"></div>
+      <h1>예배안내</h1>
+      <h4>예배시간</h4>
+      <div class="scrollable">
+        <table>
+          <thead>
+            <tr>
+              <th>예배</th>
+              <th>시간</th>
+              <th>장소</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>주일1부예배</td>
+              <td>주일 오전 9:00</td>
+              <td>2층 소예배실</td>
+            </tr>
+            <tr>
+              <td>주일2부예배</td>
+              <td>주일 오전 11:00</td>
+              <td>본당</td>
+            </tr>
+            <tr>
+              <td>주일오후예배</td>
+              <td>주일 오후 2:00</td>
+              <td>본당</td>
+            </tr>
+            <tr>
+              <td>수요예배</td>
+              <td>수요일 오후 7:00</td>
+              <td>본당</td>
+            </tr>
+            <tr>
+              <td>금요철야예배</td>
+              <td>금요일 오후 9:00</td>
+              <td>본당</td>
+            </tr>
+            <tr>
+              <td>새벽예배</td>
+              <td>월~토 오전 5:00</td>
+              <td>2층 소예배실</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <h4>교회학교</h4>
+      <div class="scrollable">
+        <table>
+          <thead>
+            <tr>
+              <th>예배</th>
+              <th>시간</th>
+              <th>장소</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>유치부</td>
+              <td>주일 오전 11:00</td>
+              <td>2층 유치부실</td>
+            </tr>
+            <tr>
+              <td>어린이부</td>
+              <td>주일 오전 11:00</td>
+              <td>1층 어린이부실</td>
+            </tr>
+            <tr>
+              <td>중고등부</td>
+              <td>주일 오전 11:00</td>
+              <td>2층 소예배실</td>
+            </tr>
+            <tr>
+              <td>아름회</td>
+              <td>주일 오후 1:00</td>
+              <td>3층 유아실</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="clear"></div>
+  </main>
+</div>

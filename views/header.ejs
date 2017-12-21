@@ -4,7 +4,7 @@
       <div class="util_menu">
         <% if(req.user && req.user.userid){ %>
           <p>안녕하세요, <%= req.user.name %>님</p>
-          <% if(req.user && req.user.userid == "admin"){ %>
+          <% if(req.user.userid == "admin"){ %>
             <a href="/admin" class="btn_admin">관리자페이지</a>
           <% } else { %>
           <a href="/userinfo" class="btn_login">회원정보</a>
