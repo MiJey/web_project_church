@@ -13,6 +13,8 @@ var index = require('./routes/index');
 var sign_in = require('./routes/sign_in');
 var sign_up = require('./routes/sign_up');
 var menu = require('./routes/menu');
+var userinfo = require('./routes/userinfo');
+var admin = require('./routes/admin');
 
 var app = express();
 var conn = mysql.createConnection({
@@ -46,6 +48,8 @@ app.use('/', index);
 app.use('/sign_in', sign_in);
 app.use('/sign_up', sign_up);
 app.use('/menu', menu);
+app.use('/userinfo', userinfo);
+app.use('/admin', admin);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

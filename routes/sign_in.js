@@ -85,4 +85,8 @@ router.get('/logout', function(req, res){
   });
 });
 
+router.get('/finduser', function(req, res, next) {
+  res.render('template', { req: req, content: "finduser" });
+});
+
 module.exports = router;

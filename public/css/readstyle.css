@@ -1,0 +1,21 @@
+a {text-decoration: none; color:#333;}
+ul li {list-style:none; }
+
+
+/* 게시판 read */
+#comments {width:700px; position:relative; top:10px; }
+.fl {float:left; }
+.tc {text-align:center; }
+.w5 {width:50px; }
+.w17 {width:170px; }
+.w7 {width:70px; }
+.w10 {width:10px; }
+.w100 {width:100px; }
+.read {width:10%; background:#bfbfbf; height:40px; font:bold 13px "Malgun Gothic"; line-height:10px; color:black; text-align:center;  }
+.read_c {background-color:#bfbfbf; }
+
+.read_con {width:90%; height:40px; float:left; font:normal 13px "Dotum"; line-height:20px; color:#333333; border-bottom:solid 1px black;  }
+.read_nl {width:10%; background:#bfbfbf; height:130px; font:bold 13px "Malgun Gothic"; line-height:100px; color:black; text-align:center; }
+.read_nl_con {width:90%; height:129px; float:left; font:normal 13px "Dotum"; line-height:20px;  }
+.bo_ser {font:14px 'dotum'; color:white;}
+.bo_ser > ul > li {float:left; margin-left:10px; }

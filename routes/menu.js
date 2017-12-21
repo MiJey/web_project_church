@@ -52,15 +52,16 @@ router.post('/:menu/:sub/:opt', function(req, res) {
   var opt = req.params.opt;
 
   var userid = req.user.userid; //로그인한 세션의 유저아이디
+  var name = req.user.name;
   var title = req.body.title;
   var content = req.body.content;
 
   if (opt == 'write') {
     //글쓰기 DB작업
-    var sql = 'INSERT INTO ?? (userid, title, content) VALUES(?, ?, ?);';
+    var sql = 'INSERT INTO ?? (userid, name, title, content) VALUES(?, ?, ?, ?);';
     var table = null;
     if (menu == 5 && sub == 2) table = 'freeboard';
-    var params = [table, userid, title, content];
+    var params = [table, userid, name, title, content];
     conn.query(sql, params, function(err, rows) {
       if (err) {
         console.log('err: ' + err);
