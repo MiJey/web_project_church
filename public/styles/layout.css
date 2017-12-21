@@ -11,6 +11,10 @@ File: Layout CSS
 @import url("fontawesome-4.5.0.min.css");
 @import url("framework.css");
 
+
+*{text-decoration:none;}
+
+
 /* Rows
 --------------------------------------------------------------------------------------------------------------- */
 .row0{border-bottom:1px solid;}
@@ -228,6 +232,11 @@ th, td{padding:5px 8px;}
 td{border-width:0 1px;}
 
 
+/* Carousel
+--------------------------------------------------------------------------------------------------------------- */
+.carousel-inner{height:600px;}
+
+
 /* Gallery
 --------------------------------------------------------------------------------------------------------------- */
 #gallery{display:block; width:100%; margin-bottom:50px;}
@@ -259,7 +268,8 @@ input:focus, textarea:focus, *:required:focus{border-color:#A1C6D9;}
 
 .txtoverlay .txtcaption{color:#FFFFFF; background-color:rgba(0,0,0,.5);}
 
-.titlebox{background-color:#A1C6D9; width:8px; height:25px; margin:2px 10px 2px 0;}
+.titlebox{background-color:#A1C6D9; width:8px; height:25px; margin:2px 10px 2px 0; float:left;}
+.subbox{background-color:#A1C6D9; width:12px; height:4px; margin:2px 10px 2px 0;}
 
 /* Rows */
 .row0{color:#797979; background-color:#F9F9F9; border-color:#D7D7D7;}
@@ -271,7 +281,7 @@ input:focus, textarea:focus, *:required:focus{border-color:#A1C6D9;}
 
 /* Top Bar
 --------------------------------------------------------------------------------------------------------------- */
-#topbar{padding:15px 0; font-size:.8rem; text-transform:uppercase;}
+#topbar{padding:15px 0; font-size:10px; text-transform:uppercase;}
 
 #topbar .inline > li i{margin:0 5px 0 0; line-height:normal;}
 

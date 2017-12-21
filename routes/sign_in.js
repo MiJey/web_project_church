@@ -64,7 +64,7 @@ passport.use(new LocalStrategy(
 ));
 
 router.get('/', function(req, res, next) {
-  res.render('sign_in', { req: req, code: 200 });
+  res.render('template', { req: req, content: "sign_in", code: 200 });
 });
 
 router.post('/login',
@@ -74,7 +74,7 @@ router.post('/login',
     failureFlash: false
   }),
   function(err, req, res, next){
-    res.render('sign_in', { req: req, code: 401 });
+    res.render('template', { req: req, content: "sign_in", code: 401 });
   }
 );
 

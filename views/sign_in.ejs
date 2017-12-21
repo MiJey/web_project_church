@@ -1,61 +1,39 @@
-<!DOCTYPE html>
-<html lang="ko-KR">
-
-<head>
-  <meta charset="utf-8" />
-  <meta name="description" content="The Overflowing church website's main page" />
-  <meta name="author" content="unikys@gmail.com" />
-  <link rel="stylesheet" type="text/css" href="/css/main.css" title="style" />
-  <link rel="stylesheet" type="text/css" href="/css/sign.css" title="style" />
-  <title>전주신상교회</title>
-</head>
-
-<body class="fullpage">
-  <div class="wrap">
-    <% include header.ejs %>
-  </div>
-
-  <div align="center">
-    <h1>로그인</h1>
-    <h2>사랑과 행복이 넘치는 전주신상교회입니다</h2>
-
-    <hr class="line"></hr>
-
+<div class="user">
+  <header class="user__header">
+    <h1 class="user__title" id="login_info"></h1>
     <% if(code == 401){ %>
-      <p class="alert">아이디와 비밀번호를 다시 한 번 확인해주세요.</p>
+    <script>
+      document.getElementById("login_info").innerHTML = "아이디와 비밀번호를 다시 한 번 확인해주세요.";
+    </script>
+    <% } else { %>
+    <script>
+      document.getElementById("login_info").innerHTML = "Welcome!";
+    </script>
     <% } %>
+  </header>
 
-    <form name="sign_in_form" method="post" action="/sign_in/login">
-      <table align="center" style="padding:5px 0 5px 0; ">
-        <tr>
-          <th>ID</th>
-          <td><input type="text" name="userid" autofocus></td>
-        </tr>
-        <tr>
-          <th>비밀번호</th>
-          <td><input type="password" name="password"></td>
-        </tr>
-      </table>
-      <input type="submit" onclick="if(button_event() == false) return false;" value="로그인">
-      <script type="text/javascript">
-        function button_event() {
-          if (sign_in_form.userid.value == "") {
-            alert("아이디를 입력하지 않았습니다.");
-            sign_in_form.username.focus();
-            return false;
-          } else if (sign_in_form.password.value == "") {
-            alert("비밀번호를 입력하지 않았습니다.");
-            sign_in_form.password.focus();
-            return false;
-          }
+  <form class="form" style="border: 2px solid;" method="post" name="form" action="/sign_in/login">
+    <div class="form__group">
+      <input type="text" placeholder="아이디" class="form__input" name="userid" autofocus/>
+    </div>
+    <div class="form__group">
+      <input type="password" placeholder="비밀번호" class="form__input" name="password" />
+    </div>
+    <input class="btn" type="button" value="로그인" onclick="button_event();" />
+
+    <script type="text/javascript">
+      function button_event() {
+        if (form.userid.value == "") {
+          document.getElementById("login_info").innerHTML = "아이디를 입력하지 않았습니다.";
+          form.userid.focus()
+          return false;
+        } else if (form.password.value == "") {
+          document.getElementById("login_info").innerHTML = "비밀번호를 입력하지 않았습니다.";
+          form.password.focus();
+          return false;
         }
-      </script>
-    </form>
-
-    <a href="/sign_in/finduser">아이디, 비밀번호 찾기</a>
-
-    <hr class="line"></hr>
-  </div>
-</body>
-
-</html>
+        form.submit();
+      }
+    </script>
+  </form>
+</div>

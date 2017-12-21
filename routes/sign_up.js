@@ -18,18 +18,18 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 router.get('/', function(req, res, next) {
-  res.render('sign_up', { req: req });
+  res.render('template', { req: req, content: "sign_up" });
 });
 
+//회원가입
 router.post('/register', function(req, res){
   var userid = req.body.userid;
   var password = req.body.password;
   var name = req.body.name;
-  var birth = req.body.year + '-' + req.body.month + '-' + req.body.date;
-  var phone = req.body.fst_ph + req.body.mid_ph + req.body.last_ph;
+  var birth = req.body.birth;
+  var phone = req.body.phone;
   var email = req.body.email;
 
-  //회원가입
   var sql = 'INSERT INTO users (userid, password, name, birth, phone, email) VALUES(?, ?, ?, ?, ?, ?);';
   var params = [ userid, password, name, birth, phone, email ];
   conn.query(sql, params, function(err, rows){
@@ -57,8 +57,7 @@ router.post('/register', function(req, res){
 });
 
 router.get('/welcome', function(req, res){
-  console.log('req: '+req.user);
-  res.render('welcome', { req: req });
+  res.render('template', { req: req, content: "welcome" });
 });
 
 module.exports = router;
