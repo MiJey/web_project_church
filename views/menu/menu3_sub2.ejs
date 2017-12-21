@@ -1,35 +1,82 @@
-<!DOCTYPE html>
-<html lang="ko-KR">
-
-<head>
-  <meta charset="utf-8" />
-  <meta name="description" content="The Overflowing church website's main page" />
-  <meta name="author" content="unikys@gmail.com" />
-  <link rel="stylesheet" type="text/css" href="/css/main.css" title="style" />
-  <link rel="stylesheet" type="text/css" href="/css/menu1_sub.css" title="style" />
-  <title>전주신상교회</title>
-</head>
-
-<body class="fullpage">
-  <div class="wrap">
-    <% include ../header.ejs %>
-
-    <div class="sub-wrap">
-      <% include ./menu3_index.ejs %>
-
-      <div class="sub-content">
-        <table class="content-table">
-          <tbody>
-            <tr>
-              <td height="90" valign="top">
-                <div class="table-title">국내선교</div>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+<div class="wrapper row2">
+  <div id="breadcrumb" class="hoc clear">
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/menu/3/1">선교</a></li>
+      <li><a href="/menu/3/2">국내선교</a></li>
+    </ul>
+  </div>
+</div>
+<div class="wrapper row3">
+  <main class="hoc container clear">
+    <div class="sidebar one_quarter first">
+      <h2>선교</h2>
+      <nav class="sdb_holder">
+        <ul>
+          <li><a href="/menu/3/1">해외선교</a></li>
+          <li><a href="/menu/3/2">국내선교</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="content three_quarter">
+      <div class="fl_left titlebox"></div>
+      <h1>국내선교</h1>
+      <table class="table table-hover">
+        <thead>
+        <tr>
+          <th>번호</th>
+          <th>제목</th>
+          <th>작성자</th>
+          <th>날짜</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td>121</td>
+          <td><a href="read">공지입니다</a></td>
+          <td>설아현</td>
+          <td>2017-12-15</td>
+        </tr>
+        <tr>
+          <td>120</td>
+          <td><a href="read">공지입니다</a></td>
+          <td>문예지</td>
+          <td>2017-12-15</td>
+        </tr>
+        <tr>
+          <td>119</td>
+          <td><a href="read">공지입니다</a></td>
+          <td>김영남</td>
+          <td>2017-12-14</td>
+        </tr>
+        <tr>
+          <td>118</td>
+          <td><a href="read">공지입니다</a></td>
+          <td>김영남</td>
+          <td>2017-12-14</td>
+        </tr>
+        <tr>
+          <td>117</td>
+          <td><a href="read">공지입니다</a></td>
+          <td>김영남</td>
+          <td>2017-12-14</td>
+        </tr>
+        </tbody>
+      </table>
+      <hr/>
+      <a href="write" class="btn btn-default pull-right">글쓰기</a>
+      <div class="text-center">
+        <ul class="pagination">
+          <li><a href="#">&laquo; Previous</a></li>
+          <li><a href="#">1</a></li>
+          <li><a href="#">2</a></li>
+          <li><a href="#">3</a></li>
+          <li><a href="#">4</a></li>
+          <li><a href="#">5</a></li>
+          <li><a href="#">Next &raquo;</a></li>
+        </ul>
       </div>
     </div>
-  </div>
-</body>
-
-</html>
+    <div class="clear"></div>
+  </main>
+</div>

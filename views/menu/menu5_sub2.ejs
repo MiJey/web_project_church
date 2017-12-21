@@ -1,61 +1,122 @@
-<!DOCTYPE html>
-<html lang="ko-KR">
-
-<head>
-  <meta charset="utf-8" />
-  <meta name="description" content="The Overflowing church website's main page" />
-  <meta name="author" content="unikys@gmail.com" />
-  <link rel="stylesheet" type="text/css" href="/css/main.css" title="style" />
-  <link rel="stylesheet" type="text/css" href="/css/menu1_sub.css" title="style" />
-  <link rel="stylesheet" type="text/css" href="/css/menu2_sub.css" title="style" />
-  <title>전주신상교회</title>
-</head>
-
-<body class="fullpage">
-  <div class="wrap">
-    <% include ../header.ejs %>
-
-    <div class="sub-wrap">
-      <% include ./menu5_index.ejs %>
-
-      <div class="sub-content">
-        <div class="table-title">자유게시판</div>
-        <table>
-    			<thead>
-    				<tr>
-    					<th scope="col" class="no">번호</th>
-    					<th scope="col" class="title">제목</th>
-    					<th scope="col" class="author">작성자</th>
-    					<th scope="col" class="date">날짜</th>
-    					<th scope="col" class="hit">조회</th>
-    				</tr>
-    			</thead>
-          <tbody>
-            <% if(posts){
-              for(var i = 0; i < posts.length; i++){
-                var post = posts[i]; %>
-                <tr>
-                  <td class="no"><%= post.id %></td>
-                  <td class="title"><a href="/menu/5/2/<%= post.id %>"><%= post.title %></a></td>
-                  <td class="author"><%= post.name %></td>
-                  <td class="date"><%= post.written %></td>
-                  <td class="hit"><%= post.views %></td>
-                </tr>
-            <% }
-            } else { %>
-                <tr>
-                  <td colspan='5'>작성된 글이 없습니다.</td>
-                </tr>
-            <% } %>
-    			</tbody>
-  		  </table>
-
-        <p>
-          <a href='javascript: location.href = location.href + "/post"'>글쓰기</a>
-        </p>
-      </div>
-    </div>
+<div class="wrapper row2">
+  <div id="breadcrumb" class="hoc clear">
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/menu/5/1">커뮤니티</a></li>
+      <li><a href="/menu/5/2">자유게시판</a></li>
+    </ul>
   </div>
-</body>
+</div>
+<div class="wrapper row3">
+  <main class="hoc container clear">
+    <div class="sidebar one_quarter first">
+      <h2>커뮤니티</h2>
+      <nav class="sdb_holder">
+        <ul>
+          <li><a href="/menu/5/1">공지사항</a></li>
+          <li><a href="/menu/5/2">자유게시판</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="content three_quarter">
+      <div class="titlebox"></div>
+      <h1>자유게시판</h1>
+      <table class="table table-hover">
+        <thead>
+        <tr>
+          <th>번호</th>
+          <th>제목</th>
+          <th>작성자</th>
+          <th>날짜</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td>121</td>
+          <td><a href="read">다음 예배는 몇시죠?</a></td>
+          <td>설아현</td>
+          <td>2017-12-15</td>
+        </tr>
+        <tr>
+          <td>120</td>
+          <td><a href="read">다음 예배는 몇시죠?</a></td>
+          <td>문예지</td>
+          <td>2017-12-15</td>
+        </tr>
+        <tr>
+          <td>119</td>
+          <td><a href="read">다음 예배는 몇시죠?</a></td>
+          <td>김영남</td>
+          <td>2017-12-14</td>
+        </tr>
+        <tr>
+          <td>118</td>
+          <td><a href="read">다음 예배는 몇시죠?</a></td>
+          <td>김영남</td>
+          <td>2017-12-14</td>
+        </tr>
+        <tr>
+          <td>117</td>
+          <td><a href="read">다음 예배는 몇시죠?</a></td>
+          <td>김영남</td>
+          <td>2017-12-14</td>
+        </tr>
+        </tbody>
+      </table>
+      <hr/>
+      <a href="write" class="btn btn-default pull-right">글쓰기</a>
+      <div class="text-center">
+        <ul class="pagination">
+          <li><a href="#">&laquo; Previous</a></li>
+          <li><a href="#">1</a></li>
+          <li><a href="#">2</a></li>
+          <li><a href="#">3</a></li>
+          <li><a href="#">4</a></li>
+          <li><a href="#">5</a></li>
+          <li><a href="#">Next &raquo;</a></li>
+        </ul>
+      </div>
+      <!--예시 테이블
+      <div class="scrollable">
+        <table>
+          <thead>
+            <tr>
+              <th>Header 1</th>
+              <th>Header 2</th>
+              <th>Header 3</th>
+              <th>Header 4</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><a href="#">Value 1</a></td>
+              <td>Value 2</td>
+              <td>Value 3</td>
+              <td>Value 4</td>
+            </tr>
+            <tr>
+              <td>Value 5</td>
+              <td>Value 6</td>
+              <td>Value 7</td>
+              <td><a href="#">Value 8</a></td>
+            </tr>
+            <tr>
+              <td>Value 9</td>
+              <td>Value 10</td>
+              <td>Value 11</td>
+              <td>Value 12</td>
+            </tr>
+            <tr>
+              <td>Value 13</td>
+              <td><a href="#">Value 14</a></td>
+              <td>Value 15</td>
+              <td>Value 16</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>-->
 
-</html>
+    </div>
+    <div class="clear"></div>
+  </main>
+</div>

@@ -76,7 +76,6 @@ router.post('/:menu/:sub/:opt', function(req, res) {
 //메뉴
 router.get('/:menu/:sub', function(req, res) {
   var menuURL = 'menu/menu' + req.params.menu + '_sub' + req.params.sub;
-  console.log(menuURL);
   var posts = null;
   var table = null;
 

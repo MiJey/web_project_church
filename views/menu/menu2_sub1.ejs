@@ -1,52 +1,84 @@
-<!DOCTYPE html>
-<html lang="ko-KR">
-
-<head>
-  <meta charset="utf-8" />
-  <meta name="description" content="The Overflowing church website's main page" />
-  <meta name="author" content="unikys@gmail.com" />
-  <link rel="stylesheet" type="text/css" href="/css/main.css" title="style" />
-  <link rel="stylesheet" type="text/css" href="/css/menu1_sub.css" title="style" />
-  <link rel="stylesheet" type="text/css" href="/css/menu2_sub.css" title="style" />
-  <title>전주신상교회</title>
-</head>
-
-<body class="fullpage">
-  <div class="wrap">
-    <% include ../header.ejs %>
-
-      <div class="sub-wrap">
-        <% include ./menu2_index.ejs %>
-
-          <div class="sub-content">
-            <table class="content-table">
-              <tbody>
-                <tr>
-                  <td height="90" valign="top">
-                    <div class="table-title">신상TV</div>
-                  </td>
-                </tr>
-                <tr>
-                  <div class="mdDefault_W100_Div">
-                    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="mdBoardTable">
-                      <tr class="md_PCverList">
-                        <th scope="col" style="width: 50px;">번호</th>
-                        <th scope="col">제목</th>
-                        <th scope="col" style="width: 120px;">본문</th>
-                        <th scope="col" style="width: 100px;">설교자</th>
-                        <th scope="col" style="width: 100px;">날짜</th>
-                        <th scope="col" class="BoardLastTh" style="width: 130px;">보기</th>
-                      </tr>
-                      <tr>
-                      </tr>
-                    </table>
-                  </div>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-      </div>
+<div class="wrapper row2">
+  <div id="breadcrumb" class="hoc clear">
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/menu/2/1">예배</a></li>
+      <li><a href="/menu/2/1">신상TV</a></li>
+    </ul>
   </div>
-</body>
-
-</html>
+</div>
+<div class="wrapper row3">
+  <main class="hoc container clear">
+    <div class="sidebar one_quarter first">
+      <h2>예배</h2>
+      <nav class="sdb_holder">
+        <ul>
+          <li><a href="/menu/2/1">신상TV</a></li>
+          <li><a href="/menu/2/2">찬양대</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="content three_quarter">
+      <div class="fl_left titlebox"></div>
+      <h1>신상TV</h1>
+      <div class="scrollable">
+        <table class="table table-hover">
+          <thead>
+          <tr>
+            <th>번호</th>
+            <th>제목</th>
+            <th>보기</th>
+            <th>날짜</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td>121</td>
+            <td><a href="#">12월 첫째주 목사님 말씀</a></td>
+            <td><button>보기</button></td>
+            <td>2017-12-15</td>
+          </tr>
+          <tr>
+            <td>120</td>
+            <td><a href="#">12월 첫째주 성가대 무대</a></td>
+            <td><button>보기</button></td>
+            <td>2017-12-15</td>
+          </tr>
+          <tr>
+            <td>119</td>
+            <td><a href="#">11월 셋째주 목사님 말씀</a></td>
+            <td><button>보기</button></td>
+            <td>2017-12-14</td>
+          </tr>
+          <tr>
+            <td>118</td>
+            <td><a href="#">11월 둘째주 목사님 말씀</a></td>
+            <td><button>보기</button></td>
+            <td>2017-12-14</td>
+          </tr>
+          <tr>
+            <td>117</td>
+            <td><a href="#">11월 첫째주 목사님 말씀</a></td>
+            <td><button>보기</button></td>
+            <td>2017-12-14</td>
+          </tr>
+          </tbody>
+        </table>
+        <hr/>
+        <a href="write" class="btn btn-default pull-right">글쓰기</a>
+        <div class="text-center">
+          <ul class="pagination">
+            <li><a href="#">&laquo; Previous</a></li>
+            <li><a href="#">1</a></li>
+            <li><a href="#">2</a></li>
+            <li><a href="#">3</a></li>
+            <li><a href="#">4</a></li>
+            <li><a href="#">5</a></li>
+            <li><a href="#">Next &raquo;</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="clear"></div>
+  </main>
+</div>
