@@ -36,7 +36,6 @@ var board = {
 
 //글보기
 router.get('/:menu/:sub/:opt', function(req, res) {
-  console.log("----get('/:menu/:sub/:opt'---------" + req.params.opt);
   var menu = req.params.menu;
   var sub = req.params.sub;
   var opt = req.params.opt;
@@ -45,7 +44,7 @@ router.get('/:menu/:sub/:opt', function(req, res) {
 
   if (opt == 'write') {
     res.render('template', { req: req, content: "menu/write", innerContent: "write", index: index, board: board[num]});
-  } else if( /^\d+$/.test(opt)){  //opt가 숫자로만 이루어져 있을 때
+  } else if( /^\d+$/.test(opt)){  //opt가 숫자로만 이루어져 있을 땐 글 보기
     //해당 글 보기(opt==글번호)
     var sql = 'SELECT * FROM ?? WHERE id=?';
     var params = [ table[num], opt ];
@@ -54,20 +53,16 @@ router.get('/:menu/:sub/:opt', function(req, res) {
         console.log('err: ' + err);
       } else {
         post = rows[0];
-        console.log("----get('/:menu/:sub/:opt'------mysql---");
         res.render('template', { req: req, post: post, content: "menu/read", innerContent: "read", index: index, board: board[num]});
       }
     });
   } else {
-    console.log("----get('/:menu/:sub/:opt'------redirect---");
     res.redirect('/menu/' + menu + '/' + sub);
   }
 });
 
 //글쓰기
 router.post('/:menu/:sub/:opt', function(req, res) {
-  console.log("----post('/:menu/:sub/:opt'----");
-
   var menu = req.params.menu;
   var sub = req.params.sub;
   var opt = req.params.opt;
@@ -78,8 +73,8 @@ router.post('/:menu/:sub/:opt', function(req, res) {
   var title = req.body.title;
   var content = req.body.content;
 
+  //글쓰기 DB작업
   if (opt == 'write') {
-    //글쓰기 DB작업
     var sql = 'INSERT INTO ?? (userid, name, title, content) VALUES(?, ?, ?, ?);';
     var params = [table[num], userid, name, title, content];
     conn.query(sql, params, function(err, rows) {
