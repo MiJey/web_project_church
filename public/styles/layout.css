@@ -236,15 +236,9 @@ td{border-width:0 1px;}
 
 /* Carousel
 --------------------------------------------------------------------------------------------------------------- */
-.carousel-inner{height:550px;}
-.carousel-inner > .item {
-	position: relative;
-	top: 50%;
-	-webkit-transform: translateY(-50%);
-  -moz-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  -o-transform: translateY(-50%);
-	transform: translateY(-50%);
+.carousel-inner{max-height:550px;}
+.carousel-inner > img {
+    margin: 0 auto;
 }
 
 
