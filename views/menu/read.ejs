@@ -1,34 +1,45 @@
 <div class="wrapper row3">
   <main class="hoc container clear">
 
-  <div class="sidebar one_quarter first">
-    <h2><%= board %></h2>
-    <nav class="sdb_holder">
-      <%- include("menu" + req.params.menu + "_index") %>
-    </nav>
-  </div>
-
-  <h1><%= post.title %></h1>
-  <div id="comments">
-    <ul>
-      <li class="read_con">작성자: <%= post.name %></li>
-      <li class="read_con">게시일: <%= post.written.toISOString().substring(0, 10) %></li>
-      <li class="read_con">수정일: <%= post.modified.toISOString().substring(0, 10) %></li>
-      <li class="read_con">조회수: <%= post.views %></li>
-    </ul>
-    <ul>
-      <li class="read_con"><%= post.content %></li>
-    </ul>
-
-    <div class="bo_ser">
-      <ul>
-        <li><a href="/menu/<%= index %>" class="btn btn-default pull-right" style="background-color:#A1C6D9; color:black;">목록으로</a></li>
-        <li><a href="#" class="btn btn-default pull-right" style="background-color:#A1C6D9; color:black;">수정</a></li>
-        <li><a href="#" class="btn btn-default pull-right" style="background-color:#A1C6D9; color:black;">삭제</a></li>
-      </ul>
+    <div class="sidebar one_quarter first">
+      <h2><%= board %></h2>
+      <nav class="sdb_holder">
+        <%- include("menu" + req.params.menu + "_index") %>
+      </nav>
     </div>
-  </div>
 
-<div class="clear"></div>
-</main>
+    <div class="content three_quarter">
+      <h1><%= post.title %></h1>
+      <div id="comments">
+        <ul>
+          <li class="read_con">작성자:
+            <%= post.name %>
+          </li>
+          <li class="read_con">게시일:
+            <%= post.written.toISOString().substring(0, 10) %>
+          </li>
+          <li class="read_con">수정일:
+            <%= post.modified.toISOString().substring(0, 10) %>
+          </li>
+          <li class="read_con">조회수:
+            <%= post.views %>
+          </li>
+        </ul>
+        <ul>
+          <li class="read_con">
+            <%= post.content %>
+          </li>
+        </ul>
+
+        <div class="bo_ser">
+          <ul>
+            <li><a href="/menu/<%= index %>" class="btn btn-default pull-right" style="background-color:#A1C6D9; color:black;">목록으로</a></li>
+            <li><a href="#" class="btn btn-default pull-right" style="background-color:#A1C6D9; color:black;">수정</a></li>
+            <li><a href="#" class="btn btn-default pull-right" style="background-color:#A1C6D9; color:black;">삭제</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="clear"></div>
+  </main>
 </div>
