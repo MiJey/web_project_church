@@ -2,6 +2,7 @@ var express = require('express');
 var logger = require('morgan');
 var bodyParser = require('body-parser');
 var mysql = require('mysql');
+var bcrypt = require('bcrypt-nodejs');
 
 var router = express.Router();
 var app = express();
@@ -18,7 +19,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 router.get('/', function(req, res, next) {
-  res.render('template', { req: req, content: "sign_up" });
+  res.render('template', { req: req, content: "sign_up"});
 });
 
 //회원가입
@@ -30,30 +31,50 @@ router.post('/register', function(req, res){
   var phone = req.body.phone;
   var email = req.body.email;
 
-  var sql = 'INSERT INTO users (userid, password, name, birth, phone, email) VALUES(?, ?, ?, ?, ?, ?);';
-  var params = [ userid, password, name, birth, phone, email ];
-  conn.query(sql, params, function(err, rows){
+  var salt = bcrypt.genSaltSync(10);
+  var hash = bcrypt.hashSync(password, salt);
+
+  var sql = 'SELECT * FROM users WHERE userid=?';
+  conn.query(sql, userid, function(err, rows){
     if(err){
       console.log('err: ' + err);
       res.redirect('/sign_up');
     }
-  });
-
-  //회원가입 후 바로 로그인, 웰컴페이지로 이동
-  sql = 'SELECT * FROM users WHERE userid=?'
-  conn.query(sql, userid, function(err, result){
-    var user = result[0];
-    if(err){
-      console.log('err: ' + err);
+    if(rows.length > 0){
+      //아이디 중복
+      res.redirect('/sign_up');
     } else {
-      console.log(user);
-      req.login(user, function(err){
-        req.session.save(function(){
-          res.redirect('/sign_up/welcome');
+      //회원정보 DB저장
+      sql = 'INSERT INTO users (userid, password, name, birth, phone, email) VALUES(?, ?, ?, ?, ?, ?);';
+      bcrypt.hash(password, null, null, function(err, hash) {
+        var params = [ userid, hash, name, birth, phone, email ];
+
+        conn.query(sql, params, function(err, rows){
+          if(err){
+            console.log('err: ' + err);
+            res.redirect('/sign_up');
+          } else {
+            //회원가입 후 바로 로그인, 웰컴페이지로 이동
+            sql = 'SELECT * FROM users WHERE userid=?';
+            conn.query(sql, userid, function(err, result){
+              var user = result[0];
+              if(err){
+                console.log('err: ' + err);
+              } else {
+                req.login(user, function(err){
+                  req.session.save(function(){
+                    res.redirect('/sign_up/welcome');
+                  });
+                });
+              }
+            });
+          }
         });
       });
+
     }
   });
+
 });
 
 router.get('/welcome', function(req, res){

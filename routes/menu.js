@@ -40,10 +40,11 @@ router.get('/:menu/:sub/:opt', function(req, res) {
   var menu = req.params.menu;
   var sub = req.params.sub;
   var opt = req.params.opt;
+  var index = req.params.menu + '/' + req.params.sub;
   var num = menu + sub + '';
 
   if (opt == 'write') {
-    res.render('template', { req: req, content: "menu/write", innerContent: "write", board: board[num]});
+    res.render('template', { req: req, content: "menu/write", innerContent: "write", index: index, board: board[num]});
   } else if( /^\d+$/.test(opt)){  //opt가 숫자로만 이루어져 있을 때
     //해당 글 보기(opt==글번호)
     var sql = 'SELECT * FROM ?? WHERE id=?';
@@ -54,7 +55,7 @@ router.get('/:menu/:sub/:opt', function(req, res) {
       } else {
         post = rows[0];
         console.log("----get('/:menu/:sub/:opt'------mysql---");
-        res.render('template', { req: req, post: post, content: "menu/read", innerContent: "read" });
+        res.render('template', { req: req, post: post, content: "menu/read", innerContent: "read", index: index, board: board[num]});
       }
     });
   } else {
@@ -108,7 +109,7 @@ router.get('/:menu/:sub', function(req, res) {
         console.log('err: ' + err);
       } else {
         posts = rows;
-        res.render('template', { req: req, content: menuURL, innerContent: "list", posts: posts, index: index, isPrivate: isPrivate });
+        res.render('template', { req: req, content: menuURL, innerContent: "list", posts: posts, index: index, isPrivate: isPrivate, board: board[num]});
       }
     });
   } else {

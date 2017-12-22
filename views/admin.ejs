@@ -1,5 +1,48 @@
-<html>
-  관리자페이지
-  회원가입승인
-  관리자가 아니면 접근 불가
-</html>
+<% if(req.user && req.user.level >= 2){ %>
+  <div class="fl_left titlebox"></div>
+  <h1>관리자 페이지</h1>
+  <hr>
+  <h1>가입 승인</h1>
+  <form method="post" action="/admin/approval">
+    <table class="table table-hover">
+      <thead>
+      <tr>
+        <th></th>
+        <th>아이디</th>
+        <th>이름</th>
+        <th>생일</th>
+        <th>휴대폰번호</th>
+        <th>이메일</th>
+      </tr>
+      </thead>
+      <tbody>
+        <% if(users){
+          for(var i = 0; i < users.length; i++){
+            var user = users[i]; %>
+        <tr>
+          <td><input type="checkbox" name="users" value="<%= user.userid %>"></td>
+          <td><%= user.userid %></td>
+          <td><%= user.name %></td>
+          <td><%= user.birth.toISOString().substring(0, 10) %></td>
+          <td><%= user.phone %></td>
+          <td><%= user.email %></td>
+        </tr>
+        <% }
+        } else { %>
+        <tr>
+          <td colspan='6'>승인 대기 중인 회원이 없습니다.</td>
+        </tr>
+        <% } %>
+      </tbody>
+    </table>
+    <input type="submit" value="가입 승인">
+  </form>
+
+  <hr>
+  <h1>가입 승인</h1>
+  <% include userinfo %>
+<% } else { %>
+<hr>
+<h1 align=center>접근권한이 없습니다</h1>
+<hr>
+<% } %>

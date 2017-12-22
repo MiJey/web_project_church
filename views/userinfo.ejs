@@ -1,1 +1,34 @@
-회원정보
+<%
+var grade = ['손님', '교인', '매니저', '관리자'];
+%>
+<% if(req.user && req.user.id){ %>
+  <div class="fl_left titlebox"></div>
+  <h1>회원정보</h1>
+  <hr>
+  <h2 id="info"></h2>
+  <form method='post' action="/userinfo/update">
+    <p>이름: <%= req.user.name %></p>
+    <p>아이디: <%= req.user.userid %></p>
+    <p>비밀번호: <input type="password" name="password"></p>
+    <p>비밀번호 확인: <input type="password"></p>
+    <p>등급: <%= grade[req.user.level] %></p>
+    <p>생일: <%= req.user.birth.toISOString().substring(0, 10) %></p>
+    <p>휴대폰 번호: <%= req.user.phone %></p>
+    <p>이메일: <%= req.user.email %></p>
+    <input type="button" value="회원정보 수정" onclick="changePassword();"/>
+    <script>
+      function changePassword(){
+        if ((form.password.value.length < 4 || form.password.value.length > 12) {
+          document.findElementById("info").innerHTML = "비밀번호를 4~12자까지 입력해주세요";
+          form.password.focus();
+        } else {
+          form.submit();
+        }
+      }
+    </script>
+  </form>
+<% } else { %>
+<hr>
+<h1 align=center>접근권한이 없습니다</h1>
+<hr>
+<% } %>

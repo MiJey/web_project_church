@@ -1,0 +1,42 @@
+<div class="user">
+  <h1>아이디 찾기</h1>
+
+  <header class="user__header">
+    <h1 class="user__title" id="info"></h1>
+    <% if(code == 401){ %>
+    <script>
+      document.getElementById("info").innerHTML = "이름과 휴대폰 번호를 다시 한 번 확인해주세요.";
+    </script>
+    <% } if(code == 201){ %>
+    <script>
+      document.getElementById("info").innerHTML = "<%= name %>님의 아이디는 '<%= userid %>'입니다.";
+    </script>
+    <% } %>
+  </header>
+  <form class="form" style="border: 2px solid;" method="post" action="/sign_in/find_userid" name="form">
+    <div class="form__group">
+      <input type="text" placeholder="이름" class="form__input" name="name" autofocus/>
+    </div>
+    <div class="form__group">
+      <input type="text" placeholder="휴대폰 번호" class="form__input" name="phone" />
+    </div>
+    <input class="btn" type="button" value="아이디 찾기" onclick="button_event();" />
+
+    <script type="text/javascript">
+      function button_event() {
+        if (form.name.value == "") {
+          document.getElementById("info").innerHTML = "이름을 입력하지 않았습니다.";
+          form.name.focus()
+          return false;
+        } else if (form.phone.value == "") {
+          document.getElementById("info").innerHTML = "휴대폰 번호를 입력하지 않았습니다.";
+          form.phone.focus();
+          return false;
+        }
+        form.submit();
+      }
+    </script>
+
+    <a class="btn" href="/sign_in">로그인 하러가기</a>
+  </form>
+</div>
