@@ -34,6 +34,73 @@ var board = {
   '52': '자유게시판'
 }
 
+//글수정
+router.get('/:menu/:sub/:idx/:opt', function(req, res){
+  var menu = req.params.menu;
+  var sub = req.params.sub;
+  var idx = req.params.idx;
+  var opt = req.params.opt;
+  var index = req.params.menu + '/' + req.params.sub;
+  var num = menu + sub + '';
+
+  if(opt == 'modify'){
+    var post = null;
+    var sql = 'SELECT * FROM ??';
+    var params = [table[num], idx];
+
+    conn.query(sql, params, function(err, rows) {
+      if (err) {
+        console.log('err: ' + err);
+      } else {
+        post = rows[0];
+        res.render('template', { req: req, content: "menu/modify", innerContent: "modify", index: index, board: board[num] });
+      }
+    });
+  } else{
+    next();
+  }
+});
+
+router.post('/:menu/:sub/:idx/:opt', function(req, res){
+  var menu = req.params.menu;
+  var sub = req.params.sub;
+  var idx = req.params.idx;
+  var opt = req.params.opt;
+  var index = req.params.menu + '/' + req.params.sub;
+  var num = menu + sub + '';
+
+  var id = req.body.id;
+  var title = req.body.title;
+  var content = req.body.content;
+
+  //글수정 DB작업
+  if (opt == 'modify') {
+    var sql = 'UPDATE ?? SET title=?, content=? WHERE id=?';
+    var params = [table[num], title, content, id];
+    conn.query(sql, params, function(err, rows) {
+      if (err) {
+        console.log('err: ' + err);
+      } else {
+        res.redirect('/menu/' + index + '/' + idx);
+      }
+    });
+  }
+
+  //글삭제 DB작업
+  else if (opt == 'delete') {
+    var sql = 'DELETE FROM ?? WHERE id=?';
+    var params = [table[num], id];
+    conn.query(sql, params, function(err, rows) {
+      if (err) {
+        console.log('err: ' + err);
+      } else {
+        res.redirect('/menu/' + index);
+      }
+    });
+  }
+
+});
+
 //글보기
 router.get('/:menu/:sub/:opt', function(req, res) {
   var menu = req.params.menu;
@@ -53,7 +120,12 @@ router.get('/:menu/:sub/:opt', function(req, res) {
         console.log('err: ' + err);
       } else {
         post = rows[0];
-        res.render('template', { req: req, post: post, content: "menu/read", innerContent: "read", index: index, board: board[num]});
+        sql = 'UPDATE ?? SET views=? WHERE id=?';
+        params = [table[num], post.views + 1, opt];
+        conn.query(sql, params, function(err, rows){
+          res.render('template', { req: req, post: post, content: "menu/read", innerContent: "read", index: index, board: board[num]});
+        });
+
       }
     });
   } else {
